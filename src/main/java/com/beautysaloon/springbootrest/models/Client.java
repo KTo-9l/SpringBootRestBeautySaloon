@@ -2,9 +2,9 @@ package com.beautysaloon.springbootrest.models;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "Clients")
-@NamedQuery(name = "Clients.getAll", query = "SELECT c from Clients c")
-public class Clients {
+@Table(name = "Client")
+@NamedQuery(name = "Client.getAll", query = "SELECT c from Client c")
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -12,18 +12,18 @@ public class Clients {
     @Column(name = "name", length = 255)
     private String name;
     @ManyToOne
-    @JoinColumn(name = "idStylists")
-    private Stylists idStylists;
+    @JoinColumn(name = "stylist")
+    private Stylist stylist;
     @Column(name = "isDeleted")
     private Boolean isDeleted;
 
-    public Clients(Integer id, String name, Stylists idStylists, Boolean isDeleted) {
+    public Client(Integer id, String name, Stylist stylist, Boolean isDeleted) {
         this.id = id;
         this.name = name;
-        this.idStylists = idStylists;
+        this.stylist = stylist;
         this.isDeleted = isDeleted;
     }
-    public Clients() {}
+    public Client() {}
     public Integer getId() {
         return id;
     }
@@ -36,11 +36,11 @@ public class Clients {
     public void setName(String name) {
         this.name = name;
     }
-    public Stylists getIdStylists() {
-        return idStylists;
+    public Stylist getStylist() {
+        return stylist;
     }
-    public void setIdStylists(Stylists idStylists) {
-        this.idStylists = idStylists;
+    public void setIdStylist(Stylist stylist) {
+        this.stylist = stylist;
     }
     public Boolean getDeleted() {
         return isDeleted;

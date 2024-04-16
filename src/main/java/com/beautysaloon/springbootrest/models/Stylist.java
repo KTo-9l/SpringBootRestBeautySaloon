@@ -2,9 +2,9 @@ package com.beautysaloon.springbootrest.models;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "Stylists")
-@NamedQuery(name = "Stylists.getAll", query = "SELECT s from Stylists s")
-public class Stylists {
+@Table(name = "Stylist")
+@NamedQuery(name = "Stylist.getAll", query = "SELECT s from Stylist s")
+public class Stylist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -13,12 +13,12 @@ public class Stylists {
     private String name;
     @Column(name="isDeleted")
     private Boolean isDeleted;
-    public Stylists(Integer id, String name, Boolean isDeleted) {
+    public Stylist(Integer id, String name, Boolean isDeleted) {
         this.id = id;
         this.name = name;
         this.isDeleted = isDeleted;
     }
-    public Stylists() {}
+    public Stylist() {}
     public Integer getId() {
         return id;
     }
