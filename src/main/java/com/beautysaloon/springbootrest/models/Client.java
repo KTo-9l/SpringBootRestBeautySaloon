@@ -2,7 +2,7 @@ package com.beautysaloon.springbootrest.models;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 @NamedQuery(name = "Client.getAll", query = "SELECT c from Client c")
 public class Client {
     @Id
