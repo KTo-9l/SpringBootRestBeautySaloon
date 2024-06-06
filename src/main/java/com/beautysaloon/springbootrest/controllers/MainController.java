@@ -16,21 +16,31 @@ public class MainController {
     @Autowired
     private ClientsRepository clientsRepository;
 
-    @PostMapping(path="/addStylists")
-    public Stylist addNewStylist(@RequestBody Stylist stylist) {
+    @PostMapping(path="/addStylist")
+    public @ResponseBody Stylist addNewStylist(@RequestBody Stylist stylist) {
         stylistsRepository.save(stylist);
         return stylist;
     }
+
     @GetMapping(path="/getStylists")
     public @ResponseBody Iterable<Stylist> getAllStylists() {
         return stylistsRepository.findAll();
     }
+
+    @PutMapping(path="/updateStylist")
+    public @ResponseBody Stylist updateStylist(@RequestBody Stylist stylist) {
+        stylistsRepository.save(stylist);
+        return stylist;
+    }
+
+    @DeleteMapping(path="/deleteStylist")
+    public @ResponseBody Stylist deleteStylist(@RequestBody Stylist stylist) {
+        stylistsRepository.softDelete(stylist.getId());
+        return stylistsRepository.findById(stylist.getId()).orElse(null);
+    }
+
     @GetMapping(path="/getClients")
     public @ResponseBody Iterable<Client> getAllClients() {
         return clientsRepository.findAll();
-    }
-    @GetMapping("/")
-    public String home() {
-        return "home";
     }
 }

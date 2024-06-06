@@ -12,7 +12,7 @@ public class Stylist {
     @Column(name = "name", length = 255)
     private String name;
     @Column(name="isDeleted")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
     public Stylist(Integer id, String name, Boolean isDeleted) {
         this.id = id;
         this.name = name;

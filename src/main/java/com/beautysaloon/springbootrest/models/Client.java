@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @NamedQuery(name = "Client.getAll", query = "SELECT c from Client c")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Column(name = "name", length = 255)
@@ -15,7 +15,7 @@ public class Client {
     @JoinColumn(name = "stylist")
     private Stylist stylist;
     @Column(name = "isDeleted")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 
     public Client(Integer id, String name, Stylist stylist, Boolean isDeleted) {
         this.id = id;
