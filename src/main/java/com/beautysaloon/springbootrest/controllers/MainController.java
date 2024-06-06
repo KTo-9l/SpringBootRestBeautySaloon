@@ -19,7 +19,7 @@ public class MainController {
     @PostMapping(path="/addStylist")
     public @ResponseBody Stylist addNewStylist(@RequestBody Stylist stylist) {
         stylistsRepository.save(stylist);
-        return stylist;
+        return stylistsRepository.findById(stylist.getId()).orElse(null);
     }
 
     @GetMapping(path="/getStylists")
@@ -30,7 +30,7 @@ public class MainController {
     @PutMapping(path="/updateStylist")
     public @ResponseBody Stylist updateStylist(@RequestBody Stylist stylist) {
         stylistsRepository.save(stylist);
-        return stylist;
+        return stylistsRepository.findById(stylist.getId()).orElse(null);
     }
 
     @DeleteMapping(path="/deleteStylist")
@@ -39,8 +39,28 @@ public class MainController {
         return stylistsRepository.findById(stylist.getId()).orElse(null);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @PostMapping(path="/addClient")
+    public @ResponseBody Client addNewClient(@RequestBody Client client) {
+        clientsRepository.save(client);
+        return clientsRepository.findById(client.getId()).orElse(null);
+    }
+
     @GetMapping(path="/getClients")
     public @ResponseBody Iterable<Client> getAllClients() {
         return clientsRepository.findAll();
+    }
+
+    @PutMapping(path="/updateClient")
+    public @ResponseBody Client updateClient(@RequestBody Client client) {
+        clientsRepository.save(client);
+        return clientsRepository.findById(client.getId()).orElse(null);
+    }
+
+    @DeleteMapping(path="/deleteClient")
+    public @ResponseBody Client deleteClient(@RequestBody Client client) {
+        clientsRepository.softDelete(client.getId());
+        return clientsRepository.findById(client.getId()).orElse(null);
     }
 }
